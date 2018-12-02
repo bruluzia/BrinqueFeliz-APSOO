@@ -10,7 +10,7 @@
 */
 package codigo;
 /*
-*@author 
+*@author Gabriel Teixeira, @author Bruna Luzia
 */
 import java.sql.Time;
 import java.util.Date;
