@@ -10,7 +10,9 @@
     no banco de dados
 */
 package bd;
-
+/*
+*@author Bruna Luzia A. Rodrigue
+*/
 import codigo.Estoque;
 import codigo.Produto;
 import java.util.List;
@@ -19,11 +21,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
  import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-/*
-*@author Bruna Luzia
-*/
+
 public class ProdutoDAO {
     private String nomeProduto;
     /**
@@ -34,9 +33,7 @@ public class ProdutoDAO {
      */
     public List<Produto> buscarProduto(String nomeProduto) throws Exception {
         Connection conn = ConexaoBD.abrir();
-
         try{ 
-            //String sql = "SELECT Produto.idProduto from Produto where Produto.nomeProduto = ?"; 
             String sql = "SELECT Produto.idProduto, Produto.nomeProduto, Estoque.quantidade FROM Produto JOIN Estoque ON (Estoque.idProduto = Produto.idProduto) WHERE Produto.nomeProduto = ?";
             PreparedStatement stmt = null;
             
@@ -50,7 +47,6 @@ public class ProdutoDAO {
             List<Estoque> lista2 = new ArrayList<Estoque>();
             System.out.println(resultado);
             while (resultado.next()) {
-                /* Cria um objeto para armazenar uma linha da consulta */
                 Produto linha = new Produto();
                 linha.setIdProduto(resultado.getInt("idProduto"));
                 linha.setNomeProduto(resultado.getString("nomeProduto"));

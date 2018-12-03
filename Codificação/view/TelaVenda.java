@@ -10,13 +10,10 @@
 */
 package view;
 
-import bd.ProdutoDAO;
 import codigo.Produto;
 import codigo.Venda;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -231,11 +228,11 @@ public class TelaVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     private void btn_insereMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_insereMouseClicked
-        //Venda venda = new Venda();
+        Venda venda = new Venda();
         
         Produto prod = new Produto();
         try {
-            //venda.realizarVenda();
+            venda.realizarVenda();
             prod.buscarProduto(codProduto.getText());
         } catch (Exception ex) {
             Logger.getLogger(TelaVenda.class.getName()).log(Level.SEVERE, null, ex);

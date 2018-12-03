@@ -10,7 +10,7 @@
 */
 package codigo;
 /*
-*@author Gabriel Teixeira, @author Bruna Luzia
+*@author Gabriel Teixeira
 */
 
 import bd.VendaDAO;
@@ -25,7 +25,7 @@ public class Venda {
     //
     public void realizarVenda() throws Exception{
         VendaDAO vendaDAO = new VendaDAO();
-        idVenda = vendaDAO.inserirVenda();        
+        vendaDAO.inserirVenda();        
     }
 
     public int getIdVenda() {

@@ -1,14 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package view;
+*Esse documento faz parte de uma aplicação desenvolvida na matéria de APSOO-2018/2 na FACOM, 
+*disciplina lecionada pelo Profª Edilson Palma
+*Seu uso é permitido para fins acadêmicos, todavia mantendo a referência de autoria.
+*@author Alexya M. Viana Domingues - Acadêmica de Engenharia de Software
+*@author Bruna Luzia A. Rodrigues - Acadêmica de Engenharia de Software
+*@author Hanna Karoline T. Palacios - Acadêmica de Engenharia de Software
+*@author Gabriel Fernando Texeira - Acadêmica de Engenharia de Software
+-->Classe utilizada para gerar os dados da tabela de itens
+*/package view;
+/*
+*@author Alexya M. Viana Domingues
+*/
 
-import codigo.Estoque;
-import codigo.ItemDeVenda;
-import codigo.Produto;
-import java.util.List;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 
@@ -68,30 +71,6 @@ public class ItemVendaTableModel extends AbstractTableModel {
 
         /* Retorna o valor capturado */
         return dado;
-    }
-
-    public void adicionar(List<Produto> lista, List<Estoque> lista2) {
-        /* Reinicializa os dados da tabela */
-        linhas = new Vector();
-
-        /* Percorre a lista copiando os dados para a tabela */
-        for (Produto d : lista) {
-            Produto prod  = new Produto();
-            ItemDeVenda item = new ItemDeVenda();
-            /* Cria uma linha da tabela */
-            Vector<Object> linha = new Vector();
-            linha.add(prod.getIdProduto());
-            linha.add(prod.getNomeProduto());
-            //linha.add(item .getQuantidade());
-            /* Adiciona a linha a tabela */
-            linhas.add(linha);
-        }
-        /* Atualiza a tabela */
-        fireTableDataChanged();
-    }
-
-    void adicionar(List<Produto> lista) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

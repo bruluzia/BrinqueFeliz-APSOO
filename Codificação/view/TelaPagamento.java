@@ -6,12 +6,12 @@
 *@author Bruna Luzia A. Rodrigues - Acadêmica de Engenharia de Software
 *@author Hanna Karoline T. Palacios - Acadêmica de Engenharia de Software
 *@author Gabriel Fernando Texeira - Acadêmica de Engenharia de Software
--->Classe Venda que tem como objetivo tratar o gerenciamento de dados da venda
+-->JFRAME TelaPagamento que tem como objetivo final implementar a parte visual do sistema
 */
 package view;
 /**
  *
- * @author stuff
+ * @author Alexya M. Viana Domingues
  */
 public class TelaPagamento extends javax.swing.JFrame {
 
