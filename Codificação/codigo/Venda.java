@@ -12,18 +12,34 @@ package codigo;
 /*
 *@author Gabriel Teixeira, @author Bruna Luzia
 */
+
+import bd.VendaDAO;
 import java.sql.Time;
 import java.util.Date;
 
 public class Venda {
-	
+    private int idVenda;
     private Date data;
     private Time horario;
+    
+    //
+    public void realizarVenda() throws Exception{
+        VendaDAO vendaDAO = new VendaDAO();
+        idVenda = vendaDAO.inserirVenda();        
+    }
+
+    public int getIdVenda() {
+        return idVenda;
+    }
+
+    public void setIdVenda(int idVenda) {
+        this.idVenda = idVenda;
+    }
 	
-    public void realizarVenda(int idProduto, int qtd) {}
+    
     public void adicionarItem(int item) {}
 	
-	//getters e setters
+    //getters e setters
     public Date getData() {
     	return data;
     }

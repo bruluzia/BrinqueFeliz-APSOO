@@ -1,20 +1,26 @@
 /*
-*Esse documento faz parte de uma aplicação desenvolvida na matéria de APSOO-2018/2 na FACOM, 
-*disciplina lecionada pelo Profª Edilson Palma
-*Seu uso é permitido para fins acadêmicos, todavia mantendo a referência de autoria.
-*@author Alexya M. Viana Domingues - Acadêmica de Engenharia de Software
-*@author Bruna Luzia A. Rodrigues - Acadêmica de Engenharia de Software
-*@author Hanna Karoline T. Palacios - Acadêmica de Engenharia de Software
-*@author Gabriel Fernando Texeira - Acadêmica de Engenharia de Software
--->Classe Principal que tem como tratar a conexão com o banco de dados, assim como as buscas,
-    insersões de dados e etc.
-*/
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package principal;
-/*
- * @author Bruna Luzia A. Rodrigues
+
+import bd.ConexaoBD;
+import codigo.Produto;
+import view.TelaVenda;
+
+/**
+ *
+ * @author brunn
  */
 public class BrinqueFeliz {
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws Exception {
+        ConexaoBD  conection = new ConexaoBD();
+        conection.abrir();
+       
+        TelaVenda realizarVenda = new TelaVenda();
+        realizarVenda.show();
+        
+        
     }
 }

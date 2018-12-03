@@ -1,22 +1,56 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+*Esse documento faz parte de uma aplicação desenvolvida na matéria de APSOO-2018/2 na FACOM, 
+*disciplina lecionada pelo Profª Edilson Palma
+*Seu uso é permitido para fins acadêmicos, todavia mantendo a referência de autoria.
+*@author Alexya M. Viana Domingues - Acadêmica de Engenharia de Software
+*@author Bruna Luzia A. Rodrigues - Acadêmica de Engenharia de Software
+*@author Hanna Karoline T. Palacios - Acadêmica de Engenharia de Software
+*@author Gabriel Fernando Texeira - Acadêmica de Engenharia de Software
+-->JFRAME TelaVenda que tem como objetivo final implementar a parte visual do sistema
+*/
 package view;
+
+import bd.ProdutoDAO;
+import codigo.Produto;
+import codigo.Venda;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author brunn
+ * @author Alexya M. Viana Domingues
  */
 public class TelaVenda extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaVenda
+     * Creates new form telaInicial
      */
     public TelaVenda() {
         initComponents();
     }
+  /* public void atualizar(){
+         try{
+             /* Criação do modelo */
+/*            Produto d = new Produto();
+            String nomeProduto = null; 
+            /* Criação do DAO */
+  /*          ProdutoDAO dao = new ProdutoDAO();
+            List<Produto> lista = dao.buscarProduto(nomeProduto);
+
+            /* Captura o modelo da tabela */
+ /*           ItemVendaTableModel modelo = (ItemVendaTableModel)tb_carrinho.getModel();
+
+            /* Copia os dados da consulta para a tabela */
+  /*          modelo.adicionar(lista);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao tentar buscar um Cliente");
+        }
+    }*/
+    TelaPagamento tela2 = new TelaPagamento();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +61,195 @@ public class TelaVenda extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        codProduto = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tb_carrinho = new javax.swing.JTable();
+        btn_continuar = new javax.swing.JButton();
+        btn_insere = new javax.swing.JButton();
+        btn_cancelar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        totaldaCompra = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+        getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Código do Produto:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(40, 80, 130, 17);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(330, 100, 210, 30);
+
+        codProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codProdutoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(codProduto);
+        codProduto.setBounds(40, 100, 200, 30);
+
+        tb_carrinho.setForeground(new java.awt.Color(204, 255, 204));
+        tb_carrinho.setModel(new ItemVendaTableModel());
+        tb_carrinho.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                tb_carrinhoComponentAdded(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tb_carrinho);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(40, 140, 530, 116);
+
+        btn_continuar.setBackground(new java.awt.Color(102, 255, 0));
+        btn_continuar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_continuar.setText("Continuar");
+        btn_continuar.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                btn_continuarStateChanged(evt);
+            }
+        });
+        btn_continuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_continuarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_continuar);
+        btn_continuar.setBounds(330, 350, 98, 30);
+
+        btn_insere.setBackground(new java.awt.Color(102, 255, 0));
+        btn_insere.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_insere.setText("Inserir");
+        btn_insere.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_insereMouseClicked(evt);
+            }
+        });
+        btn_insere.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_insereActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_insere);
+        btn_insere.setBounds(250, 100, 70, 30);
+
+        btn_cancelar.setBackground(new java.awt.Color(255, 0, 51));
+        btn_cancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_cancelar.setText("Cancelar");
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_cancelar);
+        btn_cancelar.setBounds(190, 350, 96, 30);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Total:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(460, 280, 40, 17);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Nome do produto:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(330, 80, 130, 17);
+
+        totaldaCompra.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        totaldaCompra.setText("jLabel4");
+        getContentPane().add(totaldaCompra);
+        totaldaCompra.setBounds(510, 280, 43, 17);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
+        jLabel4.setText("Iniciar Venda");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(508, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(362, 362, 362))
         );
 
-        pack();
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 630, 400);
+
+        setSize(new java.awt.Dimension(666, 439));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void codProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codProdutoActionPerformed
+        
+    }//GEN-LAST:event_codProdutoActionPerformed
+
+    private void tb_carrinhoComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tb_carrinhoComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tb_carrinhoComponentAdded
+
+    private void btn_continuarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btn_continuarStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_continuarStateChanged
+
+    private void btn_continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_continuarActionPerformed
+        
+            if(tela2 == null){
+                tela2 = new TelaPagamento();
+                tela2.setLocationRelativeTo(null);
+                tela2.setVisible(true);
+                tela2.setResizable(false);
+            } else{
+                tela2.setLocationRelativeTo(null);
+                tela2.setVisible(true);
+                tela2.setResizable(false);
+            }
+            tela2.enviaTotal(this, totaldaCompra.getText());
+        
+    }//GEN-LAST:event_btn_continuarActionPerformed
+
+    private void btn_insereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insereActionPerformed
+        //
+    }//GEN-LAST:event_btn_insereActionPerformed
+
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void btn_insereMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_insereMouseClicked
+        //Venda venda = new Venda();
+        
+        Produto prod = new Produto();
+        try {
+            //venda.realizarVenda();
+            prod.buscarProduto(codProduto.getText());
+        } catch (Exception ex) {
+            Logger.getLogger(TelaVenda.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_insereMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+         //atualizar();
+
+        //Opcional
+        setLocationRelativeTo(null);
+        setResizable(false);
+      
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -79,5 +287,18 @@ public class TelaVenda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cancelar;
+    private javax.swing.JButton btn_continuar;
+    private javax.swing.JButton btn_insere;
+    private javax.swing.JTextField codProduto;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tb_carrinho;
+    private javax.swing.JLabel totaldaCompra;
     // End of variables declaration//GEN-END:variables
 }
